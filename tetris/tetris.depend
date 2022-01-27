@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1598199919 source:c:\users\svaba1012\documents\cpp\tetris\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	<stdbool.h>
+	<math.h>
+	"highscore.h"
+
+1594117716 source:c:\users\svaba1012\documents\cpp\tetris\vektor.c
+	<stdlib.h>
+	<stdio.h>
+	"vektor.h"
+
+1594117757 c:\users\svaba1012\documents\cpp\tetris\vektor.h
+
+1597354157 source:c:\users\svaba1012\documents\cpp\tetris\highscore.c
+	"highscore.h"
+
+1597354167 c:\users\svaba1012\documents\cpp\tetris\highscore.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+
+1597350557 source:c:\users\svaba1012\desktop\github projects\tetris\highscore.c
+	"highscore.h"
+
+1597350567 c:\users\svaba1012\desktop\github projects\tetris\highscore.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+
+1594114116 source:c:\users\svaba1012\desktop\github projects\tetris\vektor.c
+	<stdlib.h>
+	<stdio.h>
+	"vektor.h"
+
+1594114157 c:\users\svaba1012\desktop\github projects\tetris\vektor.h
+
