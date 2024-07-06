@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+#include "conio.h"
 #include <time.h>
 #include <stdbool.h>
 #include <math.h>
@@ -38,7 +38,7 @@ int main(){
     char kontrola = 's';
     char tabla[Y][X], tablaKopija[Y][X], tablaSledecaF[IVICA][IVICA], tablaSledecaFKopija[IVICA][IVICA];
     int pozicijaDelovaFigureX[14], pozicijaDelovaFigureY[14], pozicijaDelovaSFX[14], pozicijaDelovaSFY[14];
-    clock_t cl;
+    int cl;
     time_t t;
     int pozX, pozY, vrsta, sledecaVrsta;
     long long rezultat = 0;
@@ -85,14 +85,15 @@ int main(){
         GIZDA:
         crtaj(tabla[START], tablaSledecaF[0], &rezultat);
         cl = clock();
-        while(clock() - cl < 1000){
+        while(clock() - cl < 1000000){
+            // printf("Sekunda prosla\n");
             if(kbhit()){
                 kontrola = getch();
                 break;
             }
         }
         kontrolisi(tabla[0], pozicijaDelovaFigureX, pozicijaDelovaFigureY, &kontrola, &vrsta);
-        system("cls");
+        system("clear");
     }
     endMenu(&rezultat);
     return 0;
@@ -459,7 +460,7 @@ bool isGameover(char *a){
 
 void endMenu(long long *rezultat){
     char c;
-    system("cls");
+    system("clear");
     printf("Rezultat: %lld\n", *rezultat);
     FILE* fajlSaRezultatima;
     fajlSaRezultatima = fopen(".\\highscore.txt", "r+");
@@ -469,7 +470,7 @@ void endMenu(long long *rezultat){
         if(kbhit())
             c = getch();
     }
-    system("cls");
+    system("clear");
     if(c == '1')
         main();
 }
