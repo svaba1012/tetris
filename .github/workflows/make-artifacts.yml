@@ -9,7 +9,7 @@ jobs:
       - name: Download code
         uses: actions/checkout@v4
       - name: Install gcc and Make
-        run: apt install gcc make
+        run: sudo apt install -y gcc make
       - name: Build project
         run: make
       - name: Upload artifact
