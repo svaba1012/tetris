@@ -6,6 +6,14 @@
 #include <string.h>
 #include <stdbool.h>
 
+#ifdef _WIN32
+    #define CLEAR_CMD "cls"
+#endif
+#ifdef unix
+    #define CLEAR_CMD "clear"
+#endif
+
+
 #define NAMELENGHT 20
 #define SCORELENGHT 20
 #define NUMOFHIGHSCORES 10

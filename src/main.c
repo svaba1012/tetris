@@ -1,10 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "conio.h"
 #include <time.h>
 #include <stdbool.h>
 #include <math.h>
+
 #include "highscore.h"
+
+#ifdef _WIN32
+    #include <conio.h>
+    #define CLOCK_VAL 1000
+    #define CLEAR_CMD "cls"
+#endif
+#ifdef unix
+    #define CLOCK_VAL 1000000
+    #include "conio_linux.h"
+    #define CLEAR_CMD "clear"
+#endif
 
 #define X 12
 #define Y 20
@@ -85,7 +96,7 @@ int main(){
         GIZDA:
         crtaj(tabla[START], tablaSledecaF[0], &rezultat);
         cl = clock();
-        while(clock() - cl < 1000000){
+        while(clock() - cl < CLOCK_VAL){
             // printf("Sekunda prosla\n");
             if(kbhit()){
                 kontrola = getch();
@@ -93,7 +104,7 @@ int main(){
             }
         }
         kontrolisi(tabla[0], pozicijaDelovaFigureX, pozicijaDelovaFigureY, &kontrola, &vrsta);
-        system("clear");
+        system(CLEAR_CMD);
     }
     endMenu(&rezultat);
     return 0;
@@ -460,17 +471,26 @@ bool isGameover(char *a){
 
 void endMenu(long long *rezultat){
     char c;
-    system("clear");
+    system(CLEAR_CMD);
     printf("Rezultat: %lld\n", *rezultat);
     FILE* fajlSaRezultatima;
-    fajlSaRezultatima = fopen(".\\highscore.txt", "r+");
+    fajlSaRezultatima = fopen("./highscore.txt", "r+");
+    if(fajlSaRezultatima == NULL){
+        fajlSaRezultatima = fopen("./highscore.txt", "w");
+        char userScore[8] = "user\n0\n";
+        for(int i = 0; i < 10; i++){
+            fwrite(userScore, 1, 7, fajlSaRezultatima);
+        }
+        fclose(fajlSaRezultatima);
+        fajlSaRezultatima = fopen("./highscore.txt", "r+");
+    }
     newHighScore(*rezultat, fajlSaRezultatima);
     printf("Pritisnite 0 za izlaz ili 1 za novu igru\n");
     while((c != '0') && (c != '1')){
         if(kbhit())
             c = getch();
     }
-    system("clear");
+    system(CLEAR_CMD);
     if(c == '1')
         main();
 }

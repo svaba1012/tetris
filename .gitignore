@@ -1,2 +1,5 @@
-build
-dist
+build/*.o
+dist/tetris
+dist/packages/linux/deb/*
+!dist/packages/linux/deb/controlFile
+dist/*.rpm

@@ -1,0 +1,5 @@
+Package: tetris
+Version: 1.0
+Architecture: amd64
+Maintainer: Svaba <https://github.com/svaba1012>
+Description: Tetris in terminal

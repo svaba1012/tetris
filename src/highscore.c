@@ -1,5 +1,7 @@
 #include "highscore.h"
 
+
+
 void newHighScore(long long trenutniRezultat, FILE* fajlSaRezultatima){
     char* allHighScores[NUMOFHIGHSCORES];
     char strScore[SCORELENGHT];
@@ -19,15 +21,16 @@ void newHighScore(long long trenutniRezultat, FILE* fajlSaRezultatima){
         return;
     }else{
         puts("Oborili ste rekord, da li zelite da ga upisete?(1 - DA)(ostalo - NE)");
-        char c[2];
-        if((strcmp(gets(c), "1")) != 0){
+        char c[4];
+        gets(c);
+        if((strncmp(c, "1", 1)) != 0){
             fclose(fajlSaRezultatima);
             return;
         }
         puts("Upisite ime:");
         fgets(novoIme, NAMELENGHT, stdin);
         index = insertInOrder(llscore, trenutniRezultat, NUMOFHIGHSCORES);
-        system("cls");
+        system(CLEAR_CMD);
         printf("\nSvaka cast %d. ste na tabeli najboljih rezultata!\n", NUMOFHIGHSCORES - index);
         insertAtIndex(allHighScores, index, novoIme);
         rewind(fajlSaRezultatima);
@@ -76,7 +79,7 @@ int insertInOrder(long long* niz, long long newValue, int size){
     p = binaryInsert(niz, newValue, size);
     index = p - niz;
     if(index == 0)
-        return;
+        return -1;
     index--;
     memcpy(niz, niz + 1, sizeof(long long) * index);
     niz[index] = newValue;
