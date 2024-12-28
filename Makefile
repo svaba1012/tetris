@@ -21,7 +21,7 @@ tetris: $(OBJ_FILES)
 	gcc -I $(INCLUDE_DIR) -o $(DIST_DIR)/tetris $(OBJ_FILES) -lrt -lm
 
 win: $(OBJ_FILES)
-	gcc -I $(INCLUDE_DIR) -o $(WIN_INSTALLATION_DIR)/tetris $(OBJ_FILES) #-lrt -lm
+	gcc -I $(INCLUDE_DIR) -o $(WIN_INSTALLATION_DIR)/tetris $(OBJ_FILES) 
 
 deb: tetris
 	mkdir $(DEB_INSTALLATION_DIR)/$(DEB_PACKAGE_NAME)
